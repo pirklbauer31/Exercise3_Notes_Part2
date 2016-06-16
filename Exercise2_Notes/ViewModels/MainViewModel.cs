@@ -90,7 +90,7 @@ namespace Exercise2_Notes.ViewModels
             if (UpdateNote)
             {
                 //Notes.Add(new Note(NewNoteContent, NewNoteDateTime));
-                dataService.SaveNote(new Note(NewNoteContent, NewNoteDateTime));
+                dataService.AddNote(new Note(NewNoteContent, NewNoteDateTime));
                 NewNoteContent = string.Empty;
                 NewNoteDateTime = DateTime.MinValue;
 
@@ -101,7 +101,7 @@ namespace Exercise2_Notes.ViewModels
             else
             {
                 //Notes.Add(new Note(NewNoteContent, DateTime.Now));
-                dataService.SaveNote(new Note(NewNoteContent, DateTime.Now));
+                dataService.AddNote(new Note(NewNoteContent, DateTime.Now));
                 NewNoteContent = string.Empty;
                 NewNoteDateTime = DateTime.MinValue;
             }
