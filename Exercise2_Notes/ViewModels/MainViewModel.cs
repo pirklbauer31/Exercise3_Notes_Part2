@@ -23,7 +23,7 @@ namespace Exercise2_Notes.ViewModels
 
         public MainViewModel(IDataService dataService)
         {
-            Notes = new ObservableCollection<Note> { new Note("TestNote", DateTime.Now)};
+           // Notes = new ObservableCollection<Note> { new Note("TestNote", DateTime.Now)};
             searchedNotes = new ObservableCollection<Note>();
             AddNoteCommand = new RelayCommand(AddNote);
             MaxNotes = 5;
@@ -41,7 +41,7 @@ namespace Exercise2_Notes.ViewModels
         }
 
         public Note Note { get; set; }
-        public ObservableCollection<Note> Notes { get; set; }
+        //public ObservableCollection<Note> Notes { get; set; }
         public string NewNoteContent { get; set; }
         public DateTime NewNoteDateTime { get; set; }
         public int MaxNotes { get; set; }
@@ -59,7 +59,7 @@ namespace Exercise2_Notes.ViewModels
                 searchedNotes.Clear();
 
                 var temp = dataService.GetAllNotes();
-
+                
                  temp =
                     temp.Where(
                         n =>
@@ -76,6 +76,7 @@ namespace Exercise2_Notes.ViewModels
                     temp = temp.OrderBy(n => n.NoteDateTime).Take(MaxNotes);
                 else
                     temp = temp.OrderByDescending(n => n.NoteDateTime).Take(MaxNotes);
+                
                 foreach (var n in temp)
                 {
                     searchedNotes.Add(n);

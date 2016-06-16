@@ -48,6 +48,7 @@ namespace Exercise2_Notes.Pages
                 //to store old note for cancelling 
                 ViewModel.UpdateNoteDummy = (Note) e.Parameter;
                 //ViewModel.Notes.Remove(editNote);
+                // Todo Update note !!
                 //ViewModel
 
                 ViewModel.NewNoteContent = editNote.NoteContent;
@@ -100,8 +101,10 @@ namespace Exercise2_Notes.Pages
             {
                 if (ViewModel.UpdateNote)
                 {
+                    // Todo Update Note !!
                     //to restore the old note when cancelling during update of note
-                    ViewModel.Notes.Add(ViewModel.UpdateNoteDummy);
+                    //ViewModel.Notes.Add(ViewModel.UpdateNoteDummy);
+                    //ViewModel.AddNote();
                     
                     cmdCreateNote.Content = "Add";
                     ViewModel.UpdateNote = false;
