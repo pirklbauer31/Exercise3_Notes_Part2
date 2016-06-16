@@ -1,0 +1,14 @@
+﻿<Application
+    x:Class="Exercise2_Notes.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Exercise2_Notes"
+    xmlns:models ="using:Exercise2_Notes.Models"
+    xmlns:viewModels ="using:Exercise2_Notes.ViewModels"
+    RequestedTheme="Light">
+    
+    <Application.Resources>
+        <viewModels:ViewModelLocator x:Key="Locator"/>
+    </Application.Resources>
+
+</Application>

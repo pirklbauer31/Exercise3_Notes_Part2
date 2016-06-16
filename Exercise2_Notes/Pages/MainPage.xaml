@@ -1,0 +1,20 @@
+﻿<Page
+    x:Class="Exercise2_Notes.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Exercise2_Notes"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="using:Exercise2_Notes.ViewModels"
+    DataContext="{Binding MainViewModel, Source={StaticResource Locator}}"
+    mc:Ignorable="d" Width="355.667">
+
+    <Grid Background="#FFFFFF72" Margin="0,0,0,123">
+        <Image x:Name="image" HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" Source="ms-appx:///Assets/Note-512.png"/>
+        <Button x:Name="cmdNavCreateNote" Content="Create Note" HorizontalAlignment="Left" Margin="115,54,0,0" VerticalAlignment="Top" Width="235" Height="100" FontSize="35" Click="{x:Bind ViewModel.NavigateToCreateNotePage}"/>
+        <Button x:Name="cmdNavReadNote" Content="Read Notes" HorizontalAlignment="Left" Margin="115,159,0,0" VerticalAlignment="Top" Width="235" Height="100" FontSize="35" Click="{x:Bind ViewModel.NavigateToReadNotePage}"/>
+        <Button x:Name="cmdNavSearchNote" Content="Search " HorizontalAlignment="Left" Margin="115,264,0,0" VerticalAlignment="Top" Width="235" Height="100" FontSize="35" Click="{x:Bind ViewModel.NavigateToSearchPage}"/>
+        <Button x:Name="cmdNavSettings" Content="Settings" HorizontalAlignment="Left" Margin="115,369,0,0" VerticalAlignment="Top" Width="235" Height="100" FontSize="35" Click="{x:Bind ViewModel.NavigateToSettingsPage}"/>
+
+    </Grid>
+</Page>
