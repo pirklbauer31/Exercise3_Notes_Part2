@@ -21,9 +21,8 @@ namespace Exercise2_Notes.ViewModels
         private readonly IDataService dataService;
         private readonly IStorageService storageService;
 
-        public MainViewModel()
+        public MainViewModel(IDataService dataService)
         {
-            //Notes = new ObservableCollection<Note>(NoteSaver.Notes);
             Notes = new ObservableCollection<Note> { new Note("TestNote", DateTime.Now)};
             searchedNotes = new ObservableCollection<Note>();
             AddNoteCommand = new RelayCommand(AddNote);
@@ -31,6 +30,8 @@ namespace Exercise2_Notes.ViewModels
             NewSearchString = "";
             OrderAscending = false;
             UpdateNote = false;
+
+            this.dataService = dataService;
 
             navigationService = new NavigationService();
             navigationService.Configure("CreateNotePage", typeof(CreateNote));
