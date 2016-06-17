@@ -16,5 +16,7 @@ namespace Exercise2_Notes.Services
         void SaveNote(Note note);
 
         void DeleteNote(Note note);
+
+        void UpdateNote(Note note);
     }
 }

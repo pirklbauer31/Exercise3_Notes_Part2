@@ -15,6 +15,8 @@
         </TextBlock>
         <TextBox x:Name="txtMaxNotes" HorizontalAlignment="Left" Margin="10,74,0,0" TextWrapping="Wrap" Text="{Binding MaxNotes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="341" Height="52" FontSize="20" InputScope="Number"/>
         <CheckBox x:Name="checkBoxAscending" Content="Order Notes Ascending?" HorizontalAlignment="Left" Margin="10,131,0,0" VerticalAlignment="Top" Width="341" FontSize="15" IsChecked="{x:Bind ViewModel.OrderAscending, Mode=TwoWay}"/>
+        <Button x:Name="cmdSavePersist" Content="Save" HorizontalAlignment="Left" Margin="10,168,0,0" VerticalAlignment="Top" Width="166" FontSize="20" Click="{x:Bind ViewModel.SavePersist}"/>
+        <Button x:Name="cmdLoadPersist" Content="Load" HorizontalAlignment="Left" Margin="185,168,0,0" VerticalAlignment="Top" Width="166" FontSize="20" Click="{x:Bind ViewModel.LoadPersist}"/>
 
     </Grid>
 </Page>

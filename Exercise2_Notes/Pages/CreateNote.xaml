@@ -11,8 +11,8 @@
     mc:Ignorable="d" Width="361.333">
 
     <Grid Background="#FFFFFF72">
-        <TextBox x:Name="txtNote" HorizontalAlignment="Left" Margin="10,83,0,0" TextWrapping="Wrap" Text="{Binding NewNoteContent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Height="432" Width="340" BorderThickness="2"  SelectionHighlightColor="#FF595959" Background="#FFFEFFEE" InputScope="Text" FontSize="18"  AcceptsReturn="True"/>
-        <TextBlock x:Name="txtDateTime" HorizontalAlignment="Left" Margin="10,58,0,0" TextWrapping="Wrap" Text="{Binding NewNoteDateTime, Mode=OneWay}" VerticalAlignment="Top" Width="340" TextAlignment="Right" />
+        <TextBox x:Name="txtNote" HorizontalAlignment="Left" Margin="10,83,0,0" TextWrapping="Wrap" Text="{Binding CurrentNote.NoteContent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Height="432" Width="340" BorderThickness="2"  SelectionHighlightColor="#FF595959" Background="#FFFEFFEE" InputScope="Text" FontSize="18"  AcceptsReturn="True"/>
+        <TextBlock x:Name="txtDateTime" HorizontalAlignment="Left" Margin="10,58,0,0" TextWrapping="Wrap" Text="{Binding CurrentNote.NoteDateTime, Mode=OneWay}" VerticalAlignment="Top" Width="340" TextAlignment="Right" />
         <Button x:Name="cmdCreateNote" Content="Add" HorizontalAlignment="Left" Margin="10,520,0,0" VerticalAlignment="Top" Width="165" Height="63" FontSize="20" RenderTransformOrigin="0,0" BorderThickness="4" Opacity="0.8" Click="cmdCreateNote_Click" />
         <Button x:Name="cmdCancelNote" Content="Cancel" HorizontalAlignment="Left" Margin="185,520,0,0" VerticalAlignment="Top" Width="165" Height="63" FontSize="20" Opacity="0.8" BorderThickness="4" Click="cmdCancelNote_Click" />
 

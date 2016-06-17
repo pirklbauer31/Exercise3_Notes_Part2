@@ -21,10 +21,13 @@ namespace Exercise2_Notes.ViewModels
         private readonly IDataService dataService;
         private readonly IStorageService storageService;
 
-        public MainViewModel(IDataService dataService)
+        public MainViewModel(IDataService dataService, IStorageService storageService)
         {
            // Notes = new ObservableCollection<Note> { new Note("TestNote", DateTime.Now)};
             searchedNotes = new ObservableCollection<Note>();
+          
+            CurrentNote = new Note();
+            
             AddNoteCommand = new RelayCommand(AddNote);
             MaxNotes = 5;
             NewSearchString = "";
@@ -32,6 +35,7 @@ namespace Exercise2_Notes.ViewModels
             UpdateNote = false;
 
             this.dataService = dataService;
+            this.storageService = storageService;
 
             navigationService = new NavigationService();
             navigationService.Configure("CreateNotePage", typeof(CreateNote));
@@ -40,7 +44,7 @@ namespace Exercise2_Notes.ViewModels
             navigationService.Configure("SearchPage", typeof(SearchNote));
         }
 
-        public Note Note { get; set; }
+        public Note CurrentNote { get; set; }
         //public ObservableCollection<Note> Notes { get; set; }
         public string NewNoteContent { get; set; }
         public DateTime NewNoteDateTime { get; set; }
@@ -87,12 +91,15 @@ namespace Exercise2_Notes.ViewModels
 
         public void AddNote()
         {
+
             if (UpdateNote)
             {
                 //Notes.Add(new Note(NewNoteContent, NewNoteDateTime));
-                dataService.AddNote(new Note(NewNoteContent, NewNoteDateTime));
-                NewNoteContent = string.Empty;
-                NewNoteDateTime = DateTime.MinValue;
+                //dataService.AddNote(new Note(NewNoteContent, NewNoteDateTime));
+                dataService.UpdateNote(CurrentNote);
+                
+                //NewNoteContent = string.Empty;
+                //NewNoteDateTime = DateTime.MinValue;
 
                 UpdateNote = false;
                 navigationService.GoBack();
@@ -101,11 +108,14 @@ namespace Exercise2_Notes.ViewModels
             else
             {
                 //Notes.Add(new Note(NewNoteContent, DateTime.Now));
-                dataService.AddNote(new Note(NewNoteContent, DateTime.Now));
-                NewNoteContent = string.Empty;
-                NewNoteDateTime = DateTime.MinValue;
+                //dataService.AddNote(new Note(NewNoteContent, DateTime.Now));
+                CurrentNote.NoteDateTime = DateTime.Now;
+                dataService.AddNote(CurrentNote);
+                //NewNoteContent = string.Empty;
+                //NewNoteDateTime = DateTime.MinValue;
             }
            
+            CurrentNote = new Note();
         }
 
         public void DeleteNote(Note noteToDelete, ListView listView)
@@ -134,6 +144,16 @@ namespace Exercise2_Notes.ViewModels
 
             
             await popupMenu.ShowAsync(listView.RenderTransformOrigin);
+        }
+
+        public void SavePersist()
+        {
+            
+        }
+
+        public void LoadPersist()
+        {
+            
         }
 
         public void NavigateToCreateNotePage()

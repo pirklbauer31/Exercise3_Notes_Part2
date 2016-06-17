@@ -44,15 +44,17 @@ namespace Exercise2_Notes.Pages
             {
                 cmdCreateNote.Content = "Edit";
 
-                Note editNote = (Note) e.Parameter;
+                //Note editNote = (Note) e.Parameter;
+                ViewModel.CurrentNote = (Note) e.Parameter;
+
                 //to store old note for cancelling 
-                ViewModel.UpdateNoteDummy = (Note) e.Parameter;
+                //ViewModel.UpdateNoteDummy = (Note) e.Parameter;
                 //ViewModel.Notes.Remove(editNote);
                 // Todo Update note !!
                 //ViewModel
 
-                ViewModel.NewNoteContent = editNote.NoteContent;
-                ViewModel.NewNoteDateTime = editNote.NoteDateTime;
+               // ViewModel.NewNoteContent = editNote.NoteContent;
+               // ViewModel.NewNoteDateTime = editNote.NoteDateTime;
                 ViewModel.UpdateNote = true;
             }
         }
@@ -80,7 +82,10 @@ namespace Exercise2_Notes.Pages
                 else
                 {
                     if (ViewModel.UpdateNote)
+                    {
                         cmdCreateNote.Content = "Add";
+                    }
+                       
                     HelpCreate();
 
                 }
@@ -106,11 +111,14 @@ namespace Exercise2_Notes.Pages
                     //ViewModel.Notes.Add(ViewModel.UpdateNoteDummy);
                     //ViewModel.AddNote();
                     
+
                     cmdCreateNote.Content = "Add";
                     ViewModel.UpdateNote = false;
                 }
-                ViewModel.NewNoteContent = string.Empty;
-                ViewModel.NewNoteDateTime = DateTime.MinValue;
+                ViewModel.CurrentNote.NoteContent = String.Empty;
+                ViewModel.CurrentNote.NoteDateTime = DateTime.MinValue;
+                //ViewModel.NewNoteContent = string.Empty;
+                //ViewModel.NewNoteDateTime = DateTime.MinValue;
                 ViewModel.NavigateBack();
             }
         }
