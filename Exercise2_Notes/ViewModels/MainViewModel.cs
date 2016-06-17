@@ -113,6 +113,7 @@ namespace Exercise2_Notes.ViewModels
                 dataService.AddNote(CurrentNote);
                 //NewNoteContent = string.Empty;
                 //NewNoteDateTime = DateTime.MinValue;
+
             }
            
             CurrentNote = new Note();
@@ -148,12 +149,21 @@ namespace Exercise2_Notes.ViewModels
 
         public void SavePersist()
         {
-            
+            storageService.Write("MaxNotes", MaxNotes);
+            storageService.Write("OrderAscending", OrderAscending);
+
+            storageService.Write(nameof(dataService), dataService.GetAllNotes());
         }
 
         public void LoadPersist()
         {
-            
+            MaxNotes = storageService.Read<int>("MaxNotes", 5);
+            OrderAscending = storageService.Read<bool?>("OrderAscending", false);
+
+            foreach (var note in storageService.Read<List<Note>>(nameof(dataService), null))
+            {
+                dataService.AddNote(note);
+            }
         }
 
         public void NavigateToCreateNotePage()
