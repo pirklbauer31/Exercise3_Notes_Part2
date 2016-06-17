@@ -48,7 +48,7 @@ namespace Exercise2_Notes.Pages
                 ViewModel.CurrentNote = (Note) e.Parameter;
 
                 //to store old note for cancelling 
-                //ViewModel.UpdateNoteDummy = (Note) e.Parameter;
+                ViewModel.UpdateNoteDummy = (Note) e.Parameter;
                 //ViewModel.Notes.Remove(editNote);
                 // Todo Update note !!
                 //ViewModel
@@ -110,13 +110,19 @@ namespace Exercise2_Notes.Pages
                     //to restore the old note when cancelling during update of note
                     //ViewModel.Notes.Add(ViewModel.UpdateNoteDummy);
                     //ViewModel.AddNote();
-                    
+
+                    ViewModel.CurrentNote.NoteContent = ViewModel.UpdateNoteDummy.NoteContent;
+                    ViewModel.CurrentNote.NoteDateTime = ViewModel.UpdateNoteDummy.NoteDateTime;
 
                     cmdCreateNote.Content = "Add";
                     ViewModel.UpdateNote = false;
                 }
-                ViewModel.CurrentNote.NoteContent = String.Empty;
-                ViewModel.CurrentNote.NoteDateTime = DateTime.MinValue;
+                else
+                {
+                    ViewModel.CurrentNote.NoteContent = String.Empty;
+                    ViewModel.CurrentNote.NoteDateTime = DateTime.MinValue;
+                }
+               
                 //ViewModel.NewNoteContent = string.Empty;
                 //ViewModel.NewNoteDateTime = DateTime.MinValue;
                 ViewModel.NavigateBack();
